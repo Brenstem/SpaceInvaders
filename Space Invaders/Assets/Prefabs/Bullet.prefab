@@ -22,6 +22,7 @@ GameObject:
   - component: {fileID: 212971570450657230}
   - component: {fileID: 50185286113294102}
   - component: {fileID: 61315499903735054}
+  - component: {fileID: 114655273855322066}
   m_Layer: 0
   m_Name: Bullet
   m_TagString: Untagged
@@ -35,13 +36,13 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1907546117304230}
-  m_LocalRotation: {x: 0, y: 0, z: 1, w: 0}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -0.61, y: -3.31, z: 0}
-  m_LocalScale: {x: 0.75, y: 0.65, z: 1}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 180}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!50 &50185286113294102
 Rigidbody2D:
   serializedVersion: 4
@@ -61,7 +62,7 @@ Rigidbody2D:
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
-  m_Constraints: 0
+  m_Constraints: 4
 --- !u!61 &61315499903735054
 BoxCollider2D:
   m_ObjectHideFlags: 1
@@ -71,7 +72,7 @@ BoxCollider2D:
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
@@ -87,6 +88,18 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.05, y: 0.11}
   m_EdgeRadius: 0
+--- !u!114 &114655273855322066
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1907546117304230}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e3f61e72d6e314641a82578b1e063902, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  speed: 40000
 --- !u!212 &212971570450657230
 SpriteRenderer:
   m_ObjectHideFlags: 1
