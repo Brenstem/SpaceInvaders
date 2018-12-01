@@ -24,7 +24,6 @@ public class Weapon : MonoBehaviour {
     {
         fireTimer += Time.deltaTime;
         float fire = Input.GetAxisRaw("Fire1");
-        Debug.Log(fireTimer);
 
         if (fire == 1 && fireTimer > fireRate)
         {
