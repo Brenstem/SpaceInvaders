@@ -27,8 +27,8 @@ public class Weapon : MonoBehaviour {
 
         if (fire == 1 && fireTimer > fireRate)
         {
-            Instantiate(bulletPrefab, firePoint1.position, firePoint1.rotation);
-            Instantiate(bulletPrefab, firePoint2.position, firePoint2.rotation);
+            Instantiate(bulletPrefab, firePoint1.position, firePoint1.rotation, this.transform);
+            Instantiate(bulletPrefab, firePoint2.position, firePoint2.rotation, this.transform);
             fireTimer = 0;
         }
     }

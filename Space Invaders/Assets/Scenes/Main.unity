@@ -487,19 +487,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7098216f57829a446b27204595b0dcbd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  lightEnemyRows: 2
+  quickEnemyRows: 1
+  bossEnemyAmount: 2
   lightEnemy: {fileID: 1989264239492006, guid: 82488423dbcd7b94dac8082be6d273f4, type: 2}
   quickEnemy: {fileID: 1880406806317084, guid: 5a56491bb962b7747b40d6698f5dcda9, type: 2}
   bossEnemy: {fileID: 1045554567533042, guid: baf35cbc41995494388d6f0db9ea2a8a, type: 2}
   protectorEnemy: {fileID: 1073921364423034, guid: 7058f6782a336f8468c8262b14cbb84f,
     type: 2}
-  lightEnemyAmount: 0
-  quickEnemyAmount: 0
-  bossEnemyAmount: 0
-  protectorPerBossAmount: 0
   startingSpawnPos: {fileID: 1563786633}
-  rows: 1
-  columns: 10
-  enemyBreathingRoom: 0.5
+  rows: 3
+  columns: 5
+  enemyBreathingRoom: 0.83
 --- !u!4 &1563786633
 Transform:
   m_ObjectHideFlags: 0
@@ -507,7 +506,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1563786631}
   m_LocalRotation: {x: 0, y: 0, z: 1, w: 0}
-  m_LocalPosition: {x: 0.61, y: 4.51, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}

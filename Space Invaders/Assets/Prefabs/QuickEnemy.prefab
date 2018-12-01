@@ -22,6 +22,7 @@ GameObject:
   - component: {fileID: 212564715844352694}
   - component: {fileID: 50521031277557354}
   - component: {fileID: 61519571037869890}
+  - component: {fileID: 114410002129367204}
   m_Layer: 0
   m_Name: QuickEnemy
   m_TagString: Untagged
@@ -56,7 +57,7 @@ Rigidbody2D:
   m_Mass: 1
   m_LinearDrag: 0
   m_AngularDrag: 0.05
-  m_GravityScale: 1
+  m_GravityScale: 0
   m_Material: {fileID: 0}
   m_Interpolate: 0
   m_SleepingMode: 1
@@ -87,6 +88,18 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.32, y: 0.32}
   m_EdgeRadius: 0
+--- !u!114 &114410002129367204
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1880406806317084}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 58d7655021fad8941b1affd1ecd4e99a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  speed: 2
 --- !u!212 &212564715844352694
 SpriteRenderer:
   m_ObjectHideFlags: 1
