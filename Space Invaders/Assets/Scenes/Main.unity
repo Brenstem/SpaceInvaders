@@ -460,6 +460,59 @@ Prefab:
     - {fileID: 50734440644952922, guid: 570ae823de771004582f7eb9c0b6b882, type: 2}
   m_SourcePrefab: {fileID: 100100000, guid: 570ae823de771004582f7eb9c0b6b882, type: 2}
   m_IsPrefabAsset: 0
+--- !u!1 &1563786631
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1563786633}
+  - component: {fileID: 1563786632}
+  m_Layer: 0
+  m_Name: EnemySpawner
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1563786632
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1563786631}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7098216f57829a446b27204595b0dcbd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  lightEnemy: {fileID: 1989264239492006, guid: 82488423dbcd7b94dac8082be6d273f4, type: 2}
+  quickEnemy: {fileID: 1880406806317084, guid: 5a56491bb962b7747b40d6698f5dcda9, type: 2}
+  bossEnemy: {fileID: 1045554567533042, guid: baf35cbc41995494388d6f0db9ea2a8a, type: 2}
+  protectorEnemy: {fileID: 1073921364423034, guid: 7058f6782a336f8468c8262b14cbb84f,
+    type: 2}
+  lightEnemyAmount: 0
+  quickEnemyAmount: 0
+  bossEnemyAmount: 0
+  protectorPerBossAmount: 0
+  startingSpawnPos: {fileID: 1563786633}
+  rows: 1
+  columns: 10
+  enemyBreathingRoom: 0.5
+--- !u!4 &1563786633
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1563786631}
+  m_LocalRotation: {x: 0, y: 0, z: 1, w: 0}
+  m_LocalPosition: {x: 0.61, y: 4.51, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 4
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 180}
 --- !u!1 &1881571893 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 1213249809502764, guid: 570ae823de771004582f7eb9c0b6b882,

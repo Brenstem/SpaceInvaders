@@ -44,8 +44,7 @@ public class EnemySpawner : MonoBehaviour {
         for (int i = 0; i < columns; i++)
         {
             Instantiate(lightEnemy, spawnPosition);
-            spawnPosition.Translate(new Vector2(1, 0));
+            
         }
-
     }
 }
