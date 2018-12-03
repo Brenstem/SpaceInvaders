@@ -5,11 +5,16 @@ using UnityEngine;
 public class EnemyController : MonoBehaviour {
 
     [SerializeField] float speed;
+    [SerializeField] int hp;
+    private Transform enemySpawner;
+
     Rigidbody2D rb;
+
     private Vector3 movement;
 
     void Start()
     {
+        enemySpawner = GetComponent<Transform>();
         rb = GetComponent<Rigidbody2D>();
         movement = new Vector2(1, 0) * speed * Time.fixedDeltaTime;
     }
@@ -25,8 +30,23 @@ public class EnemyController : MonoBehaviour {
         rb.MovePosition(transform.position + movement);
     }
 
-    private void OnTriggerEnter2D(Collider2D collision)
+    public void TakeDamage(int dmg)
     {
-        movement = -movement;
+        hp -= dmg;
+        if (hp <= 0)
+            Die();
+    }
+
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        foreach (Transform enemy in enemySpawner)
+        {
+            movement = -movement;
+        }
+    }
+
+    void Die()
+    {
+        Destroy(this.gameObject);
     }
 }

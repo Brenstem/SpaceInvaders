@@ -34,6 +34,7 @@ public class EnemySpawner : MonoBehaviour {
         {
             SpawnLightEnemies();
             SpawnQuickEnemies();
+            SpawnBossEnemies();
         }
 
         spawn = false;
@@ -46,6 +47,7 @@ public class EnemySpawner : MonoBehaviour {
         {
             Instantiate(lightEnemy, new Vector2(startingSpawnPos.position.x - enemyBreathingRoom,
                 startingSpawnPos.position.y + i * enemyBreathingRoom), Quaternion.identity, this.transform);
+
 
             for (int j = 0; j < columns-1; j++)
             {
@@ -75,6 +77,39 @@ public class EnemySpawner : MonoBehaviour {
 
     private void SpawnBossEnemies()
     {
+        int protectorRows = currentYPos;
 
+        if (protectorAmount > 0)
+            protectorRows++;
+
+        for (int i = currentYPos; i < protectorRows; i++)
+        {
+            Instantiate(protectorEnemy, new Vector2(startingSpawnPos.position.x - enemyBreathingRoom,
+                startingSpawnPos.position.y + i * enemyBreathingRoom), Quaternion.identity, this.transform);
+
+            for (int j = 0; j < bossEnemyAmount * protectorAmount - 1; j++)
+            {
+                Instantiate(protectorEnemy, new Vector2(startingSpawnPos.position.x + j * enemyBreathingRoom,
+                startingSpawnPos.position.y + i * enemyBreathingRoom), Quaternion.identity, this.transform);
+            }
+            currentYPos++;
+        }
+
+        int bossRows = currentYPos;
+
+        if (bossEnemyAmount > 0)
+            bossRows++;
+
+        for (int i = currentYPos; i < bossRows; i++)
+        {
+            Instantiate(bossEnemy, new Vector2(startingSpawnPos.position.x - enemyBreathingRoom,
+                startingSpawnPos.position.y + i * enemyBreathingRoom), Quaternion.identity, this.transform);
+            for (int j = 0; j < bossEnemyAmount - 1; j++)
+            {
+
+                Instantiate(bossEnemy, new Vector2(startingSpawnPos.position.x + j * enemyBreathingRoom, 
+                    startingSpawnPos.position.y + i * enemyBreathingRoom), Quaternion.identity, this.transform);
+            }
+        }
     }
 }
