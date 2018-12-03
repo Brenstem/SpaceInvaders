@@ -21,7 +21,6 @@ public class BulletController : MonoBehaviour {
 
     private void OnTriggerEnter2D(Collider2D hitInfo)
     {
-        Debug.Log(hitInfo.name);
         EnemyController enemy = hitInfo.GetComponent<EnemyController>();
         if (enemy != null)
         {
