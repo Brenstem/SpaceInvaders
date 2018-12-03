@@ -6,6 +6,8 @@ public class EnemySpawner : MonoBehaviour {
 
     [SerializeField] int lightEnemyRows;
     [SerializeField] int quickEnemyRows;
+    [SerializeField] int protectorAmount;
+    [SerializeField] int bossEnemyAmount;
 
     [SerializeField] GameObject lightEnemy;
     [SerializeField] GameObject quickEnemy;
@@ -15,7 +17,7 @@ public class EnemySpawner : MonoBehaviour {
     [SerializeField] Transform startingSpawnPos;
 
     //These two will need range keyword
-    [SerializeField] int rows;
+    [SerializeField] int rows; // not used atm
     [SerializeField] int columns;
 
     [SerializeField] float enemyBreathingRoom;
@@ -39,6 +41,7 @@ public class EnemySpawner : MonoBehaviour {
 
     private void SpawnLightEnemies()
     {
+        lightEnemyRows += currentYPos;
         for (int i = currentYPos; i < lightEnemyRows; i++)
         {
             Instantiate(lightEnemy, new Vector2(startingSpawnPos.position.x - enemyBreathingRoom,
@@ -52,9 +55,11 @@ public class EnemySpawner : MonoBehaviour {
             currentYPos++;
         }
     }
+
     private void SpawnQuickEnemies()
     {
-        for (int i = currentYPos; i < quickEnemyRows + currentYPos; i++)
+        quickEnemyRows += currentYPos;
+        for (int i = currentYPos; i < quickEnemyRows; i++)
         {
             Instantiate(quickEnemy, new Vector2(startingSpawnPos.position.x - enemyBreathingRoom,
                 startingSpawnPos.position.y + i * enemyBreathingRoom), Quaternion.identity, this.transform);
@@ -64,6 +69,12 @@ public class EnemySpawner : MonoBehaviour {
                 Instantiate(quickEnemy, new Vector2(startingSpawnPos.position.x + j * enemyBreathingRoom,
                     startingSpawnPos.position.y + i * enemyBreathingRoom), Quaternion.identity, this.transform);
             }
+            currentYPos++;
         }
+    }
+
+    private void SpawnBossEnemies()
+    {
+
     }
 }
