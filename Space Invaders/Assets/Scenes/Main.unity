@@ -121,6 +121,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 329010950}
+  - component: {fileID: 329010951}
   m_Layer: 0
   m_Name: EnemyHolder
   m_TagString: Untagged
@@ -141,6 +142,18 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &329010951
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 329010949}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3ef86911c27f6c047a63e02e610bdf0c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  camera: {fileID: 519420031}
 --- !u!1 &519420028
 GameObject:
   m_ObjectHideFlags: 0
@@ -367,18 +380,17 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   lightEnemyRows: 1
   quickEnemyRows: 1
-  protectorAmount: 2
-  bossEnemyAmount: 3
+  protectorAmount: 1
+  bossEnemyAmount: 2
+  columns: 5
+  enemyBreathingRoom: 0
   lightEnemy: {fileID: 1989264239492006, guid: 82488423dbcd7b94dac8082be6d273f4, type: 2}
   quickEnemy: {fileID: 1880406806317084, guid: 5a56491bb962b7747b40d6698f5dcda9, type: 2}
   bossEnemy: {fileID: 1045554567533042, guid: baf35cbc41995494388d6f0db9ea2a8a, type: 2}
   protectorEnemy: {fileID: 1073921364423034, guid: 7058f6782a336f8468c8262b14cbb84f,
     type: 2}
-  camera: {fileID: 519420031}
   startingSpawnPos: {fileID: 1563786633}
   EnemyHolder: {fileID: 329010950}
-  columns: 5
-  enemyBreathingRoom: 0
 --- !u!4 &1563786633
 Transform:
   m_ObjectHideFlags: 0
