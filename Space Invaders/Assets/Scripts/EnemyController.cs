@@ -4,29 +4,28 @@ using UnityEngine;
 
 public class EnemyController : MonoBehaviour
 {
-
+    // Inspector variables 
     [SerializeField] float speed;
     [SerializeField] int hp;
-    Rigidbody2D rb;
 
-    public Vector3 movement;
+    // Private variables
+    private Rigidbody2D rb;
+    private Vector3 movement;
 
-    void Start()
+    // Gets components and sets private variables
+    private void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
         movement = new Vector2(1, 0) * speed * Time.fixedDeltaTime;
     }
 
-    void FixedUpdate()
+    // Physics based movement
+    private void FixedUpdate()
     {
         Move();
     }
 
-    void Move()
-    {
-        rb.MovePosition(transform.position + movement);
-    }
-
+    // Function for making the player take damage
     public void TakeDamage(int dmg)
     {
         hp -= dmg;
@@ -36,11 +35,19 @@ public class EnemyController : MonoBehaviour
         }
     }
 
+    // Function for making the player change direction
     public void ChangeDirection()
     {
         movement = -movement;
     }
 
+    // Moves the player based on the movement vector
+    private void Move()
+    {
+        rb.MovePosition(transform.position + movement);
+    }
+
+    // Function for killing the player
     void Die()
     {
         Destroy(this.gameObject);

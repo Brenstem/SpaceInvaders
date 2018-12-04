@@ -4,23 +4,17 @@ using UnityEngine;
 
 public class Weapon : MonoBehaviour {
 
+    // Inspector variables 
     [SerializeField] Transform firePoint1;
     [SerializeField] Transform firePoint2;
     [SerializeField] GameObject bulletPrefab;
     [SerializeField] float fireRate;
-    float fireTimer;
 
-    private void Start()
-    {
-        fireTimer = 0;
-    }
+    // private variables
+    private float fireTimer = 0;
 
-    void Update()
-    {
-        Shoot();
-    }
-
-    void Shoot()
+    // Instantiates bullets at firepoints if it's been long enough since the last shot
+    public void Shoot()
     {
         fireTimer += Time.deltaTime;
         float fire = Input.GetAxisRaw("Fire1");

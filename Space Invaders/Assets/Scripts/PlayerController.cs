@@ -4,21 +4,34 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour {
 
+    // Insector variables
     [SerializeField] float speed;
-    Rigidbody2D rb;
 
-    void Start()
+    // Private variables
+    private Rigidbody2D rb;
+    private Weapon weapon;
+
+    // Gets components
+    private void Awake()
     {
+        weapon = GetComponent<Weapon>();
         rb = GetComponent<Rigidbody2D>();
     }
 
-    // Update is called once per frame
-    void FixedUpdate ()
+    // Shooting
+    private void Update()
+    {
+        weapon.Shoot();   
+    }
+
+    // Physics based movement
+    private void FixedUpdate ()
     {
         Move();
     }
 
-    void Move()
+    // Moves the player based on horizontal axis input and speed
+    private void Move()
     {
         float moveX = Input.GetAxisRaw("Horizontal");
         Vector3 movement = new Vector2(moveX, 0) * speed * Time.fixedDeltaTime;
