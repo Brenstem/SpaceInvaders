@@ -18,11 +18,13 @@ public class Weapon : MonoBehaviour {
     {
         fireTimer += Time.deltaTime;
         float fire = Input.GetAxisRaw("Fire1");
+        float offset = this.GetComponent<BoxCollider2D>().size.y * this.transform.localScale.y;
+
 
         if (fire == 1 && fireTimer > fireRate)
         {
-            Instantiate(bulletPrefab, firePoint1.position, firePoint1.rotation, this.transform);
-            Instantiate(bulletPrefab, firePoint2.position, firePoint2.rotation, this.transform);
+            Instantiate(bulletPrefab, new Vector2(firePoint1.position.x, firePoint1.position.y + offset), firePoint1.rotation, this.transform);
+            Instantiate(bulletPrefab, new Vector2(firePoint2.position.x, firePoint2.position.y + offset), firePoint2.rotation, this.transform);
             fireTimer = 0;
         }
     }

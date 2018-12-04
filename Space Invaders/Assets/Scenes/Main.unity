@@ -153,7 +153,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3ef86911c27f6c047a63e02e610bdf0c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  camera: {fileID: 519420031}
+  edgeOffset: 0.69
 --- !u!1 &519420028
 GameObject:
   m_ObjectHideFlags: 0
@@ -187,7 +187,7 @@ Camera:
   m_Enabled: 1
   serializedVersion: 2
   m_ClearFlags: 2
-  m_BackGroundColor: {r: 0.19215687, g: 0.3019608, b: 0.4745098, a: 0}
+  m_BackGroundColor: {r: 0, g: 0, b: 0, a: 0}
   m_projectionMatrixMode: 1
   m_SensorSize: {x: 36, y: 24}
   m_LensShift: {x: 0, y: 0}
@@ -253,7 +253,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1183506396}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.61, y: 1, z: 0.08203125}
+  m_LocalPosition: {x: 0.61, y: 0.8, z: 0.08203125}
   m_LocalScale: {x: 1.3333334, y: 1.3333334, z: 1}
   m_Children: []
   m_Father: {fileID: 1881571898}
@@ -272,7 +272,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4398402155693856, guid: 570ae823de771004582f7eb9c0b6b882, type: 2}
       propertyPath: m_LocalPosition.y
-      value: -3.28
+      value: -4
       objectReference: {fileID: 0}
     - target: {fileID: 4398402155693856, guid: 570ae823de771004582f7eb9c0b6b882, type: 2}
       propertyPath: m_LocalPosition.z
@@ -347,6 +347,10 @@ Prefab:
       value: 
       objectReference: {fileID: 1907546117304230, guid: 01d4920bbfc0da443868274853dea7c4,
         type: 2}
+    - target: {fileID: 1213249809502764, guid: 570ae823de771004582f7eb9c0b6b882, type: 2}
+      propertyPath: m_TagString
+      value: Player
+      objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 50734440644952922, guid: 570ae823de771004582f7eb9c0b6b882, type: 2}
   m_SourcePrefab: {fileID: 100100000, guid: 570ae823de771004582f7eb9c0b6b882, type: 2}
@@ -379,11 +383,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   lightEnemyRows: 1
-  quickEnemyRows: 1
-  protectorAmount: 1
-  bossEnemyAmount: 2
-  columns: 5
-  enemyBreathingRoom: 0
+  quickEnemyRows: 0
+  protectorAmount: 0
+  bossEnemyAmount: 0
+  columns: 1
+  enemyBreathingRoom: 0.2
   lightEnemy: {fileID: 1989264239492006, guid: 82488423dbcd7b94dac8082be6d273f4, type: 2}
   quickEnemy: {fileID: 1880406806317084, guid: 5a56491bb962b7747b40d6698f5dcda9, type: 2}
   bossEnemy: {fileID: 1045554567533042, guid: baf35cbc41995494388d6f0db9ea2a8a, type: 2}
@@ -398,7 +402,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1563786631}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: -0.38, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -472,7 +476,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 2048835068}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.66, y: 1, z: 0.08203125}
+  m_LocalPosition: {x: -0.66, y: 0.8, z: 0.08203125}
   m_LocalScale: {x: 1.3333334, y: 1.3333334, z: 1}
   m_Children: []
   m_Father: {fileID: 1881571898}

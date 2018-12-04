@@ -9,13 +9,18 @@ public class PlayerController : MonoBehaviour {
 
     // Private variables
     private Rigidbody2D rb;
-    private Weapon weapon;
+    private Weapon weapon; 
+    private Vector2 viewportSize;
+    private float xBounds;
 
     // Gets components
     private void Awake()
     {
+        Camera camera = Camera.main;
         weapon = GetComponent<Weapon>();
         rb = GetComponent<Rigidbody2D>();
+        viewportSize.x = camera.orthographicSize * camera.aspect;
+        xBounds = viewportSize.x  - (this.GetComponent<BoxCollider2D>().size.x * this.transform.localScale.x) / 2;
     }
 
     // Shooting
@@ -27,7 +32,7 @@ public class PlayerController : MonoBehaviour {
     // Physics based movement
     private void FixedUpdate ()
     {
-        Move();
+            Move();
     }
 
     // Moves the player based on horizontal axis input and speed
@@ -35,6 +40,13 @@ public class PlayerController : MonoBehaviour {
     {
         float moveX = Input.GetAxisRaw("Horizontal");
         Vector3 movement = new Vector2(moveX, 0) * speed * Time.fixedDeltaTime;
+
+        if (this.transform.position.x > xBounds)
+            this.transform.position = new Vector2(xBounds, this.transform.position.y);
+
+        if (this.transform.position.x < -xBounds)
+            this.transform.position = new Vector2(-xBounds, this.transform.position.y);
+
         rb.MovePosition(transform.position + movement);
     }
 }

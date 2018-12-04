@@ -5,7 +5,7 @@ using UnityEngine;
 public class StaticEnemyController : MonoBehaviour {
 
     // Inspector variables
-    [SerializeField] Camera camera;
+    [Range(0,6)][SerializeField] float edgeOffset;
 
     // Private variables
     private Vector2 viewportSize;
@@ -14,7 +14,8 @@ public class StaticEnemyController : MonoBehaviour {
     // Sets private variables
     private void Awake()
     {
-        viewportSize = camera.ScreenToWorldPoint(new Vector2(Screen.width, Screen.height));
+        Camera camera = Camera.main;
+        viewportSize.x = camera.orthographicSize * camera.aspect;
         xBounds = viewportSize.x;
     }
 
@@ -34,13 +35,11 @@ public class StaticEnemyController : MonoBehaviour {
         for (int i = 0; i < this.transform.childCount; i++)
         {
             // Checks if their position is bigger/smaller than the maximum size of the camera
-            if (this.transform.GetChild(i).GetComponent<Transform>().position.x > xBounds
-                - this.transform.GetChild(i).GetComponent<BoxCollider2D>().size.x
-                * this.transform.GetChild(i).GetComponent<Transform>().localScale.x / 2 ||
-                this.transform.GetChild(i).GetComponent<Transform>().position.x <
-                -xBounds + this.transform.GetChild(i).GetComponent<BoxCollider2D>().size.x
-                * this.transform.GetChild(i).GetComponent<Transform>().localScale.x / 2)
-                    check = true;
+            if (this.transform.GetChild(i).transform.position.x > xBounds - this.transform.GetChild(i).GetComponent<BoxCollider2D>().size.x
+                * this.transform.GetChild(i).transform.localScale.x / 2 - edgeOffset ||
+                this.transform.GetChild(i).transform.position.x < -xBounds + this.transform.GetChild(i).GetComponent<BoxCollider2D>().size.x
+                * this.transform.GetChild(i).transform.localScale.x / 2 + edgeOffset)
+            { check = true; }
         }
 
         // Changes direction of all children if one child has hit the bounds
