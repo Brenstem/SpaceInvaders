@@ -102,7 +102,7 @@ MonoBehaviour:
   staticSpeed: 3
   movingSpeed: 5
   hp: 1
-  movingStateTimer: 2
+  movingStateTimer: 1000000
 --- !u!212 &212220321262817432
 SpriteRenderer:
   m_ObjectHideFlags: 1
