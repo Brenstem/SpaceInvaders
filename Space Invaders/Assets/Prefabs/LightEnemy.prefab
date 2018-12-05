@@ -100,9 +100,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   staticSpeed: 3
-  movingSpeed: 5
+  movingSpeed: 40
   hp: 1
-  movingStateTimer: 1000000
+  movingStateTimer: 1
+  XSpeedMultiplier: 4
 --- !u!212 &212220321262817432
 SpriteRenderer:
   m_ObjectHideFlags: 1

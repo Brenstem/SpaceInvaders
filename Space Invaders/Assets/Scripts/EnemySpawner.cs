@@ -4,13 +4,13 @@
 public class EnemySpawner : MonoBehaviour
 {
     // Inspector variables 
-    [Range(0, 3)] [SerializeField] int lightEnemyRows;
-    [Range(0, 2)] [SerializeField] int quickEnemyRows;
-    [Range(0, 3)] [SerializeField] int protectorAmount;
-    [Range(0, 3)] [SerializeField] int bossEnemyAmount;
+    [SerializeField] int lightEnemyRows;
+    [SerializeField] int quickEnemyRows;
+    [SerializeField] int protectorAmount;
+    [SerializeField] int bossEnemyAmount;
 
-    [Range(0, 15)] [SerializeField] int columns;
-    [Range(0, 0.5f)] [SerializeField] float enemyBreathingRoom;
+    [SerializeField] int columns;
+    [SerializeField] float enemyBreathingRoom;
 
     [SerializeField] GameObject lightEnemy;
     [SerializeField] GameObject quickEnemy;

@@ -5,11 +5,15 @@ using UnityEngine;
 public class StaticEnemyController : MonoBehaviour {
 
     // Inspector variables
-    [Range(0,6)][SerializeField] float edgeOffset;
+    [SerializeField] float edgeOffset;
+    [SerializeField] float changeStateTimer;
 
     // Private variables
     private Vector2 viewportSize;
     private float xBounds;
+    private bool check = false;
+    private float timer = 0;
+
 
     // Sets private variables
     private void Awake()
@@ -28,9 +32,6 @@ public class StaticEnemyController : MonoBehaviour {
     // Changes direction of all children at once
     private void moveStatic()
     {
-
-        bool check = false;
-
         // Loops through all children
         for (int i = 0; i < this.transform.childCount; i++)
         {

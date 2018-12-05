@@ -9,14 +9,18 @@ public class EnemyController : MonoBehaviour
     [SerializeField] float movingSpeed;
     [SerializeField] int hp;
     [SerializeField] float movingStateTimer;
+    [Tooltip("Multiplier for x axis movement during moving state")][SerializeField] float XSpeedMultiplier;
 
     // Private variables
     private Rigidbody2D rb;
     private Vector3 movement;
     private GameObject target;
-    private Vector2 targetVector;
+    private Vector2 vectorToTarget;
     private float timer = 0;
     private bool movingState = false;
+
+    bool initialMove = true;
+
 
     // Gets components and sets private variables
     private void Awake()
@@ -34,8 +38,11 @@ public class EnemyController : MonoBehaviour
 
     private void Update()
     {
-        targetVector = target.transform.position;
+        vectorToTarget = target.transform.position - this.transform.position;
+        vectorToTarget = vectorToTarget / vectorToTarget.magnitude;
+        vectorToTarget.x *= XSpeedMultiplier;
         timer += Time.deltaTime;
+
         if (timer > movingStateTimer)
             movingState = true;
     }
@@ -43,7 +50,33 @@ public class EnemyController : MonoBehaviour
     // Physics based movement
     private void FixedUpdate()
     {
-        Move();
+            Move();  
+    }
+
+    // Moves the player based on the movement vector
+    private void Move()
+    {
+        if (!movingState)
+            rb.MovePosition(transform.position + movement);
+
+        else if (movingState)
+        {
+            if (initialMove)
+            {
+                Debug.Log("inital move");
+                rb.AddForce(Vector2.up * 3000 * Time.fixedDeltaTime);
+                rb.AddForce(Vector2.right * 3000 * Time.fixedDeltaTime);
+
+                initialMove = false;
+            }
+            rb.AddForce(vectorToTarget * movingSpeed * Time.fixedDeltaTime);
+        }
+    }
+
+    // Function for killing the player
+    private void Die()
+    {
+        Destroy(this.gameObject);
     }
 
     // Function for making the player take damage
@@ -62,23 +95,4 @@ public class EnemyController : MonoBehaviour
         movement = -movement;
     }
 
-    // Moves the player based on the movement vector
-    private void Move()
-    {
-        if (!movingState)
-        {
-            rb.MovePosition(transform.position + movement);
-        }
-        else if (movingState)
-        {
-            Debug.Log(target.transform.position);
-            rb.AddForce(targetVector * Time.deltaTime);
-        }
-    }
-
-    // Function for killing the player
-    void Die()
-    {
-        Destroy(this.gameObject);
-    }
 }
