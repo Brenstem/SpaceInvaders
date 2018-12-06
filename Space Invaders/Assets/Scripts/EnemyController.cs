@@ -5,6 +5,7 @@ public class EnemyController : MonoBehaviour
     // Inspector variables 
     [SerializeField] float staticSpeed;
     [SerializeField] float movingSpeed;
+    [SerializeField] int mScoreValue;
     [Tooltip("Multiplier for x axis movement during moving state")] [SerializeField] float XSpeedMultiplier;
 
     // Private variables
@@ -13,7 +14,9 @@ public class EnemyController : MonoBehaviour
     private GameObject target;
     private Vector2 vectorToTarget;
     private Weapon[] weapons;
-    private Health health;
+
+    public int scoreValue { get { return mScoreValue; } }
+
 
     public bool movingState = false;
 
@@ -25,7 +28,6 @@ public class EnemyController : MonoBehaviour
     {
         rb = GetComponent<Rigidbody2D>();
         weapons = GetComponents<Weapon>();
-        health = GetComponent<Health>();
         movement = new Vector2(1, 0) * staticSpeed * Time.fixedDeltaTime;
     }
 

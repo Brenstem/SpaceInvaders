@@ -103,6 +103,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   staticSpeed: 3
   movingSpeed: 40
+  mScoreValue: 1
   XSpeedMultiplier: 4
   movingState: 0
 --- !u!114 &114616516734391398
@@ -134,7 +135,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7477457ecbf7c2844bfe267db1ec8a23, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  hp: 2
+  healthPoints: 5
 --- !u!212 &212220321262817432
 SpriteRenderer:
   m_ObjectHideFlags: 1

@@ -1,8 +1,7 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
-public class BulletController : MonoBehaviour {
+public class BulletController : MonoBehaviour
+{
 
     // Inspector variables
     [SerializeField] float speed;
@@ -19,12 +18,16 @@ public class BulletController : MonoBehaviour {
     }
 
     // Used to add force to the bullet on it's spawn
-    void Start ()
+    void Start()
     {
         if (transform.parent.gameObject.CompareTag("Player"))
+        {
             shotDirection = Vector2.up;
+        }
         else if (transform.parent.gameObject.CompareTag("Enemy"))
+        {
             shotDirection = Vector2.down;
+        }
 
         Move();
     }
@@ -38,12 +41,12 @@ public class BulletController : MonoBehaviour {
     // Damages enemies and destroys the bullet on impact
     private void OnTriggerEnter2D(Collider2D hitInfo)
     {
-        // Checks if hit object has a enemycontroller component, if it does damage the gameobject
-        if (hitInfo.CompareTag("Player") || hitInfo.CompareTag("Enemy"))
+        if (hitInfo.GetComponent<Health>() != null && hitInfo.tag != transform.parent.tag)
+        {
             hitInfo.GetComponent<Health>().TakeDamage(dmg);
-
-        if(hitInfo.tag != transform.parent.tag)
             Destroy(this.gameObject);
+        }
+        
     }
 
 }
