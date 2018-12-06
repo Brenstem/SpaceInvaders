@@ -23,9 +23,10 @@ GameObject:
   - component: {fileID: 50191593025829040}
   - component: {fileID: 61406183947522682}
   - component: {fileID: 114233970845866230}
+  - component: {fileID: 114260511058429976}
   m_Layer: 0
   m_Name: ProtectorEnemy
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -101,9 +102,20 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   staticSpeed: 3
   movingSpeed: 40
-  hp: 2
   XSpeedMultiplier: 4
   movingState: 0
+--- !u!114 &114260511058429976
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1073921364423034}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7477457ecbf7c2844bfe267db1ec8a23, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  hp: 3
 --- !u!212 &212044155451239050
 SpriteRenderer:
   m_ObjectHideFlags: 1

@@ -66,7 +66,8 @@ public class StaticEnemyController : MonoBehaviour
     // 
     private void ChangeState()
     {
-        transform.GetChild(Random.Range(0, transform.childCount)).GetComponent<EnemyController>().ChangeState();
+        if (transform.childCount > 0)
+            transform.GetChild(Random.Range(0, transform.childCount)).GetComponent<EnemyController>().ChangeState();
     }
 
     // Changes direction of all children

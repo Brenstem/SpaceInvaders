@@ -23,9 +23,11 @@ GameObject:
   - component: {fileID: 50323951704295062}
   - component: {fileID: 61064078181167158}
   - component: {fileID: 114058641191272962}
+  - component: {fileID: 114616516734391398}
+  - component: {fileID: 114974220827274694}
   m_Layer: 0
   m_Name: LightEnemy
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -37,7 +39,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1989264239492006}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -1.733, y: 0.542, z: 0}
+  m_LocalPosition: {x: 2.9824908, y: 3.47, z: 0}
   m_LocalScale: {x: 2.5, y: 2.5, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -101,9 +103,38 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   staticSpeed: 3
   movingSpeed: 40
-  hp: 1
   XSpeedMultiplier: 4
   movingState: 0
+--- !u!114 &114616516734391398
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1989264239492006}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ec87d7c73f277304688c9f96f81a2c11, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  xOffset: 0
+  yOffset: -1
+  bulletPrefab: {fileID: 1907546117304230, guid: 01d4920bbfc0da443868274853dea7c4,
+    type: 2}
+  fireRate: 1
+  autoFire: 1
+  bulletHolder: {fileID: 0}
+--- !u!114 &114974220827274694
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1989264239492006}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7477457ecbf7c2844bfe267db1ec8a23, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  hp: 2
 --- !u!212 &212220321262817432
 SpriteRenderer:
   m_ObjectHideFlags: 1

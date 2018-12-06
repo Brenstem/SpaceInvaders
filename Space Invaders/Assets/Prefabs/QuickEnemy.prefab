@@ -23,9 +23,10 @@ GameObject:
   - component: {fileID: 50521031277557354}
   - component: {fileID: 61519571037869890}
   - component: {fileID: 114410002129367204}
+  - component: {fileID: 114167846928845134}
   m_Layer: 0
   m_Name: QuickEnemy
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -88,6 +89,18 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.18, y: 0.2}
   m_EdgeRadius: 0
+--- !u!114 &114167846928845134
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1880406806317084}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7477457ecbf7c2844bfe267db1ec8a23, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  hp: 1
 --- !u!114 &114410002129367204
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -101,7 +114,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   staticSpeed: 3
   movingSpeed: 60
-  hp: 1
   XSpeedMultiplier: 4
   movingState: 0
 --- !u!212 &212564715844352694

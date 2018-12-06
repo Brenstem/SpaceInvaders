@@ -9,7 +9,8 @@ public class BulletController : MonoBehaviour {
     [SerializeField] int dmg;
 
     // Private variables
-    Rigidbody2D rb;
+    private Rigidbody2D rb;
+    private Vector2 shotDirection;
 
     // Gets components
     private void Awake()
@@ -18,28 +19,31 @@ public class BulletController : MonoBehaviour {
     }
 
     // Used to add force to the bullet on it's spawn
-    void Start () {
+    void Start ()
+    {
+        if (transform.parent.gameObject.CompareTag("Player"))
+            shotDirection = Vector2.up;
+        else if (transform.parent.gameObject.CompareTag("Enemy"))
+            shotDirection = Vector2.down;
+
         Move();
     }
 
     // Adds a force based on speed the 'up' vector to the bullet
     private void Move()
     {
-        rb.AddForce(Vector2.up * speed * Time.fixedDeltaTime);
+        rb.AddForce(shotDirection * speed * Time.fixedDeltaTime);
     }
 
     // Damages enemies and destroys the bullet on impact
     private void OnTriggerEnter2D(Collider2D hitInfo)
     {
         // Checks if hit object has a enemycontroller component, if it does damage the gameobject
+        if (hitInfo.CompareTag("Player") || hitInfo.CompareTag("Enemy"))
+            hitInfo.GetComponent<Health>().TakeDamage(dmg);
 
-        EnemyController enemy = hitInfo.GetComponent<EnemyController>();
-        if (enemy != null)
-        {
-            enemy.TakeDamage(dmg);
-        }
-
-        Destroy(this.gameObject);
+        if(hitInfo.tag != transform.parent.tag)
+            Destroy(this.gameObject);
     }
 
 }

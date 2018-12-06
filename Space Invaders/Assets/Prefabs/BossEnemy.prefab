@@ -23,9 +23,10 @@ GameObject:
   - component: {fileID: 50730392082162978}
   - component: {fileID: 61387652880663112}
   - component: {fileID: 114589131380411938}
+  - component: {fileID: 114820495957465966}
   m_Layer: 0
   m_Name: BossEnemy
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -101,9 +102,20 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   staticSpeed: 3
   movingSpeed: 40
-  hp: 5
   XSpeedMultiplier: 4
   movingState: 0
+--- !u!114 &114820495957465966
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1045554567533042}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7477457ecbf7c2844bfe267db1ec8a23, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  hp: 5
 --- !u!212 &212142746308723004
 SpriteRenderer:
   m_ObjectHideFlags: 1

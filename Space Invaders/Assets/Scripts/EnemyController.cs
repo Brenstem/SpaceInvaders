@@ -5,7 +5,6 @@ public class EnemyController : MonoBehaviour
     // Inspector variables 
     [SerializeField] float staticSpeed;
     [SerializeField] float movingSpeed;
-    [SerializeField] int hp;
     [Tooltip("Multiplier for x axis movement during moving state")] [SerializeField] float XSpeedMultiplier;
 
     // Private variables
@@ -13,6 +12,8 @@ public class EnemyController : MonoBehaviour
     private Vector3 movement;
     private GameObject target;
     private Vector2 vectorToTarget;
+    private Weapon[] weapons;
+    private Health health;
 
     public bool movingState = false;
 
@@ -23,6 +24,8 @@ public class EnemyController : MonoBehaviour
     private void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
+        weapons = GetComponents<Weapon>();
+        health = GetComponent<Health>();
         movement = new Vector2(1, 0) * staticSpeed * Time.fixedDeltaTime;
     }
 
@@ -34,10 +37,22 @@ public class EnemyController : MonoBehaviour
 
     private void Update()
     {
-        vectorToTarget = new Vector2(target.transform.position.x - this.transform.position.x, -1);
-        vectorToTarget = vectorToTarget / vectorToTarget.magnitude;
-        vectorToTarget = vectorToTarget * movingSpeed * Time.fixedDeltaTime;
-        vectorToTarget.x *= XSpeedMultiplier;
+        if (target != null)
+        {
+            vectorToTarget = new Vector2(target.transform.position.x - this.transform.position.x, -1);
+            vectorToTarget = vectorToTarget / vectorToTarget.magnitude;
+            vectorToTarget = vectorToTarget * movingSpeed * Time.fixedDeltaTime;
+            vectorToTarget.x *= XSpeedMultiplier;
+        }
+        
+
+        if (movingState)
+        {
+            for (int i = 0; i < weapons.Length; i++)
+            {
+                weapons[i].Shoot();
+            }
+        }
     }
 
     // Physics based movement
@@ -63,22 +78,6 @@ public class EnemyController : MonoBehaviour
             }
 
             rb.AddForce(vectorToTarget );
-        }
-    }
-
-    // Function for killing the player
-    private void Die()
-    {
-        Destroy(this.gameObject);
-    }
-
-    // Function for making the player take damage
-    public void TakeDamage(int dmg)
-    {
-        hp -= dmg;
-        if (hp <= 0)
-        {
-            Die();
         }
     }
 

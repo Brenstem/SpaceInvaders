@@ -9,6 +9,8 @@ public class Weapon : MonoBehaviour {
     [SerializeField] float yOffset;
     [SerializeField] GameObject bulletPrefab;
     [SerializeField] float fireRate;
+    [SerializeField] bool autoFire;
+    [SerializeField] GameObject bulletHolder;
 
     // private variables
     private float fireTimer = 0;
@@ -25,11 +27,23 @@ public class Weapon : MonoBehaviour {
         fireTimer += Time.deltaTime;
         float fire = Input.GetAxisRaw("Fire1");
 
-        if (fire == 1 && fireTimer > fireRate)
+        if (!autoFire)
         {
-            Instantiate(bulletPrefab, firePosition, transform.rotation, transform);
-            fireTimer = 0;
+            if (fire == 1 && fireTimer > fireRate)
+            {
+                Instantiate(bulletPrefab, firePosition, transform.rotation, transform);
+                fireTimer = 0;
+            }
         }
+        else if (autoFire)
+        {
+            if (fireTimer > fireRate)
+            {
+                Instantiate(bulletPrefab, firePosition, transform.rotation, transform);
+                fireTimer = 0;
+            }
+        }
+        
     }
 
     private void OnDrawGizmos()
