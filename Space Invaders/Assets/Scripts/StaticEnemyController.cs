@@ -18,19 +18,25 @@ public class StaticEnemyController : MonoBehaviour {
     // Sets private variables
     private void Awake()
     {
-        Camera camera = Camera.main;
-        viewportSize.x = camera.orthographicSize * camera.aspect;
+        viewportSize.x = Camera.main.orthographicSize * Camera.main.aspect;
         xBounds = viewportSize.x;
     }
 
     // Calls move function every tenth of a second
     private void Start()
     {
-        InvokeRepeating("moveStatic", 0, 0.1f);
+        InvokeRepeating("MoveStatic", 0, 0.1f);
+    }
+
+    private void Update()
+    {
+        timer += Time.deltaTime;
+        if (timer > changeStateTimer)
+            ChangeState();
     }
 
     // Changes direction of all children at once
-    private void moveStatic()
+    private void MoveStatic()
     {
         // Loops through all children
         for (int i = 0; i < this.transform.childCount; i++)
@@ -48,6 +54,15 @@ public class StaticEnemyController : MonoBehaviour {
         {
             ChangeDirection();
             check = false;
+        }
+    }
+
+    // 
+    private void ChangeState()
+    {
+        for (int i = 0; i < this.transform.childCount; i++)
+        {
+            this.transform.GetChild(i).GetComponent<EnemyController>().ChangeState();
         }
     }
     

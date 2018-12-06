@@ -41,10 +41,6 @@ public class EnemyController : MonoBehaviour
         vectorToTarget = target.transform.position - this.transform.position;
         vectorToTarget = vectorToTarget / vectorToTarget.magnitude;
         vectorToTarget.x *= XSpeedMultiplier;
-        timer += Time.deltaTime;
-
-        if (timer > movingStateTimer)
-            movingState = true;
     }
 
     // Physics based movement
@@ -63,7 +59,6 @@ public class EnemyController : MonoBehaviour
         {
             if (initialMove)
             {
-                Debug.Log("inital move");
                 rb.AddForce(Vector2.up * 3000 * Time.fixedDeltaTime);
                 rb.AddForce(Vector2.right * 3000 * Time.fixedDeltaTime);
 
@@ -93,6 +88,12 @@ public class EnemyController : MonoBehaviour
     public void ChangeDirection()
     {
         movement = -movement;
+    }
+
+    // Changes the state of enemy to moving
+    public void ChangeState()
+    {
+        movingState = true;
     }
 
 }
