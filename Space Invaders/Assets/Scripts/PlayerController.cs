@@ -9,7 +9,7 @@ public class PlayerController : MonoBehaviour {
 
     // Private variables
     private Rigidbody2D rb;
-    private Weapon weapon; 
+    private Weapon[] weapons; 
     private Vector2 viewportSize;
     private float xBounds;
 
@@ -17,7 +17,8 @@ public class PlayerController : MonoBehaviour {
     private void Awake()
     {
         Camera camera = Camera.main;
-        weapon = GetComponent<Weapon>();
+        weapons = GetComponents<Weapon>();
+
         rb = GetComponent<Rigidbody2D>();
         viewportSize.x = camera.orthographicSize * camera.aspect;
         xBounds = viewportSize.x  - (this.GetComponent<BoxCollider2D>().size.x * this.transform.localScale.x) / 2;
@@ -26,7 +27,10 @@ public class PlayerController : MonoBehaviour {
     // Shooting
     private void Update()
     {
-        weapon.Shoot();   
+        for (int i = 0; i < weapons.Length; i++)
+        {
+            weapons[i].Shoot();
+        }
     }
 
     // Physics based movement

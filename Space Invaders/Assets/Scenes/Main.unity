@@ -522,6 +522,22 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 1213249809502764, guid: 570ae823de771004582f7eb9c0b6b882,
     type: 2}
   m_PrefabInternal: {fileID: 1560686983}
+--- !u!114 &1881571894
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1881571893}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ec87d7c73f277304688c9f96f81a2c11, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  xOffset: -0.5
+  yOffset: -0.8
+  bulletPrefab: {fileID: 1907546117304230, guid: 01d4920bbfc0da443868274853dea7c4,
+    type: 2}
+  fireRate: 0.5
 --- !u!50 &1881571895
 Rigidbody2D:
   serializedVersion: 4
@@ -558,8 +574,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ec87d7c73f277304688c9f96f81a2c11, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  firePoint1: {fileID: 1183506397}
-  firePoint2: {fileID: 2048835069}
+  xOffset: 0.5
+  yOffset: 0.8
   bulletPrefab: {fileID: 1907546117304230, guid: 01d4920bbfc0da443868274853dea7c4,
     type: 2}
   fireRate: 0.5

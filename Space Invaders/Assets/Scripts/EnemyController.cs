@@ -96,7 +96,6 @@ public class EnemyController : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D hitInfo)
     {
-        Debug.Log("Should loop");
         if (hitInfo.tag == "Loop")
         {
             transform.position = new Vector2(transform.position.x, 7);
