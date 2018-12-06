@@ -113,6 +113,60 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!1 &87911537
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 87911539}
+  - component: {fileID: 87911538}
+  m_Layer: 0
+  m_Name: BottomWall
+  m_TagString: Loop
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!61 &87911538
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 87911537}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0, y: 0}
+    oldSize: {x: 0, y: 0}
+    newSize: {x: 0, y: 0}
+    adaptiveTilingThreshold: 0
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 20.06, y: 1}
+  m_EdgeRadius: 0
+--- !u!4 &87911539
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 87911537}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: -8, z: 0}
+  m_LocalScale: {x: 2.675, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 5
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &265177432
 GameObject:
   m_ObjectHideFlags: 0
@@ -207,7 +261,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3ef86911c27f6c047a63e02e610bdf0c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  edgeOffset: 0.7
+  edgeOffset: 0.5
   changeStateTimer: 3
 --- !u!1 &519420028
 GameObject:
@@ -437,12 +491,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7098216f57829a446b27204595b0dcbd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  lightEnemyRows: 1
-  quickEnemyRows: 0
-  protectorAmount: 0
-  bossEnemyAmount: 0
-  columns: 1
-  enemyBreathingRoom: 0
+  lightEnemyRows: 3
+  quickEnemyRows: 1
+  protectorAmount: 2
+  bossEnemyAmount: 1
+  columns: 10
+  enemyBreathingRoom: 0.1
   lightEnemy: {fileID: 1989264239492006, guid: 82488423dbcd7b94dac8082be6d273f4, type: 2}
   quickEnemy: {fileID: 1880406806317084, guid: 5a56491bb962b7747b40d6698f5dcda9, type: 2}
   bossEnemy: {fileID: 1045554567533042, guid: baf35cbc41995494388d6f0db9ea2a8a, type: 2}
@@ -457,7 +511,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1563786631}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: -1.06, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -508,7 +562,7 @@ MonoBehaviour:
   firePoint2: {fileID: 2048835069}
   bulletPrefab: {fileID: 1907546117304230, guid: 01d4920bbfc0da443868274853dea7c4,
     type: 2}
-  fireRate: 0.3
+  fireRate: 0.5
 --- !u!1 &2048835068
 GameObject:
   m_ObjectHideFlags: 0

@@ -1,6 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class EnemyController : MonoBehaviour
 {
@@ -8,18 +6,17 @@ public class EnemyController : MonoBehaviour
     [SerializeField] float staticSpeed;
     [SerializeField] float movingSpeed;
     [SerializeField] int hp;
-    [SerializeField] float movingStateTimer;
-    [Tooltip("Multiplier for x axis movement during moving state")][SerializeField] float XSpeedMultiplier;
+    [Tooltip("Multiplier for x axis movement during moving state")] [SerializeField] float XSpeedMultiplier;
 
     // Private variables
     private Rigidbody2D rb;
     private Vector3 movement;
     private GameObject target;
     private Vector2 vectorToTarget;
-    private float timer = 0;
-    private bool movingState = false;
 
-    bool initialMove = true;
+    public bool movingState = false;
+
+    private bool initialMove = true;
 
 
     // Gets components and sets private variables
@@ -27,7 +24,6 @@ public class EnemyController : MonoBehaviour
     {
         rb = GetComponent<Rigidbody2D>();
         movement = new Vector2(1, 0) * staticSpeed * Time.fixedDeltaTime;
-
     }
 
     // Finds player
@@ -38,15 +34,16 @@ public class EnemyController : MonoBehaviour
 
     private void Update()
     {
-        vectorToTarget = target.transform.position - this.transform.position;
+        vectorToTarget = new Vector2(target.transform.position.x - this.transform.position.x, -1);
         vectorToTarget = vectorToTarget / vectorToTarget.magnitude;
+        vectorToTarget = vectorToTarget * movingSpeed * Time.fixedDeltaTime;
         vectorToTarget.x *= XSpeedMultiplier;
     }
 
     // Physics based movement
     private void FixedUpdate()
     {
-            Move();  
+        Move();
     }
 
     // Moves the player based on the movement vector
@@ -64,7 +61,8 @@ public class EnemyController : MonoBehaviour
 
                 initialMove = false;
             }
-            rb.AddForce(vectorToTarget * movingSpeed * Time.fixedDeltaTime);
+
+            rb.AddForce(vectorToTarget );
         }
     }
 
@@ -94,6 +92,15 @@ public class EnemyController : MonoBehaviour
     public void ChangeState()
     {
         movingState = true;
+    }
+
+    private void OnTriggerEnter2D(Collider2D hitInfo)
+    {
+        Debug.Log("Should loop");
+        if (hitInfo.tag == "Loop")
+        {
+            transform.position = new Vector2(transform.position.x, 7);
+        }
     }
 
 }

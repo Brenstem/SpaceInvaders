@@ -99,10 +99,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 58d7655021fad8941b1affd1ecd4e99a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 3
+  staticSpeed: 3
+  movingSpeed: 60
   hp: 1
-  movingStateTarget: {fileID: 1213249809502764, guid: 570ae823de771004582f7eb9c0b6b882,
-    type: 2}
+  XSpeedMultiplier: 4
+  movingState: 0
 --- !u!212 &212564715844352694
 SpriteRenderer:
   m_ObjectHideFlags: 1

@@ -1,8 +1,7 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
-public class StaticEnemyController : MonoBehaviour {
+public class StaticEnemyController : MonoBehaviour
+{
 
     // Inspector variables
     [SerializeField] float edgeOffset;
@@ -20,6 +19,7 @@ public class StaticEnemyController : MonoBehaviour {
     {
         viewportSize.x = Camera.main.orthographicSize * Camera.main.aspect;
         xBounds = viewportSize.x;
+
     }
 
     // Calls move function every tenth of a second
@@ -32,7 +32,10 @@ public class StaticEnemyController : MonoBehaviour {
     {
         timer += Time.deltaTime;
         if (timer > changeStateTimer)
+        {
             ChangeState();
+            timer = 0;
+        }
     }
 
     // Changes direction of all children at once
@@ -41,12 +44,15 @@ public class StaticEnemyController : MonoBehaviour {
         // Loops through all children
         for (int i = 0; i < this.transform.childCount; i++)
         {
-            // Checks if their position is bigger/smaller than the maximum size of the camera
-            if (this.transform.GetChild(i).transform.position.x > xBounds - this.transform.GetChild(i).GetComponent<BoxCollider2D>().size.x
-                * this.transform.GetChild(i).transform.localScale.x / 2 - edgeOffset ||
-                this.transform.GetChild(i).transform.position.x < -xBounds + this.transform.GetChild(i).GetComponent<BoxCollider2D>().size.x
-                * this.transform.GetChild(i).transform.localScale.x / 2 + edgeOffset)
-            { check = true; }
+            if (!transform.GetChild(i).GetComponent<EnemyController>().movingState)
+            {
+                // Checks if their position is bigger/smaller than the maximum size of the camera
+                if (this.transform.GetChild(i).transform.position.x > xBounds - this.transform.GetChild(i).GetComponent<BoxCollider2D>().size.x
+                    * this.transform.GetChild(i).transform.localScale.x / 2 - edgeOffset ||
+                    this.transform.GetChild(i).transform.position.x < -xBounds + this.transform.GetChild(i).GetComponent<BoxCollider2D>().size.x
+                    * this.transform.GetChild(i).transform.localScale.x / 2 + edgeOffset)
+                { check = true; }
+            }
         }
 
         // Changes direction of all children if one child has hit the bounds
@@ -60,12 +66,9 @@ public class StaticEnemyController : MonoBehaviour {
     // 
     private void ChangeState()
     {
-        for (int i = 0; i < this.transform.childCount; i++)
-        {
-            this.transform.GetChild(i).GetComponent<EnemyController>().ChangeState();
-        }
+        transform.GetChild(Random.Range(0, transform.childCount)).GetComponent<EnemyController>().ChangeState();
     }
-    
+
     // Changes direction of all children
     private void ChangeDirection()
     {
