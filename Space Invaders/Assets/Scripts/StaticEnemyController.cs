@@ -25,7 +25,7 @@ public class StaticEnemyController : MonoBehaviour
     // Calls move function every tenth of a second
     private void Start()
     {
-        InvokeRepeating("MoveStatic", 0, 0.1f);
+        InvokeRepeating("MoveStatic", 0, 0.1f); // Changing direction bugs out if this is in update
     }
 
     private void Update()
@@ -38,13 +38,14 @@ public class StaticEnemyController : MonoBehaviour
         }
     }
 
+
     // Changes direction of all children at once
     private void MoveStatic()
     {
         // Loops through all children
         for (int i = 0; i < this.transform.childCount; i++)
         {
-            if (!transform.GetChild(i).GetComponent<EnemyController>().movingState)
+            if (!transform.GetChild(i).GetComponent<EnemyController>().MovingState)
             {
                 // Checks if their position is bigger/smaller than the maximum size of the camera
                 if (this.transform.GetChild(i).transform.position.x > xBounds - this.transform.GetChild(i).GetComponent<BoxCollider2D>().size.x
@@ -63,7 +64,7 @@ public class StaticEnemyController : MonoBehaviour
         }
     }
 
-    // 
+    // Changes state of all static enemies
     private void ChangeState()
     {
         if (transform.childCount > 0)

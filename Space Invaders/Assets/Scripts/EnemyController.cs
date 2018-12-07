@@ -14,13 +14,12 @@ public class EnemyController : MonoBehaviour
     private GameObject target;
     private Vector2 vectorToTarget;
     private Weapon[] weapons;
-
-    public int scoreValue { get { return mScoreValue; } }
-
-
-    public bool movingState = false;
-
     private bool initialMove = true;
+    private bool mMovingState = false;
+
+    // Properties
+    public int scoreValue { get { return mScoreValue; } }
+    public bool MovingState { get { return mMovingState; } set { mMovingState = value; } }
 
 
     // Gets components and sets private variables
@@ -37,6 +36,7 @@ public class EnemyController : MonoBehaviour
         target = GameObject.FindGameObjectWithTag("Player");
     }
 
+    // Updates the vector pointing towards the player and shoots if the enemy is in movingstate
     private void Update()
     {
         if (target != null)
@@ -46,9 +46,8 @@ public class EnemyController : MonoBehaviour
             vectorToTarget = vectorToTarget * movingSpeed * Time.fixedDeltaTime;
             vectorToTarget.x *= XSpeedMultiplier;
         }
-        
 
-        if (movingState)
+        if (MovingState)
         {
             for (int i = 0; i < weapons.Length; i++)
             {
@@ -63,27 +62,18 @@ public class EnemyController : MonoBehaviour
         Move();
     }
 
-    // Moves the player based on the movement vector
-    private void Move()
+    // Loops the enemy if it hits the trigger below the map
+    // Could also just check the y position of the enemy to do this
+    private void OnTriggerEnter2D(Collider2D hitInfo)
     {
-        if (!movingState)
-            rb.MovePosition(transform.position + movement);
-
-        else if (movingState)
+        if (hitInfo.tag == "Loop")
         {
-            if (initialMove)
-            {
-                rb.AddForce(Vector2.up * 3000 * Time.fixedDeltaTime);
-                rb.AddForce(Vector2.right * 3000 * Time.fixedDeltaTime);
-
-                initialMove = false;
-            }
-
-            rb.AddForce(vectorToTarget );
+            transform.position = new Vector2(transform.position.x, 7);
         }
     }
 
-    // Function for making the player change direction
+
+    // Function for making the enemy change direction
     public void ChangeDirection()
     {
         movement = -movement;
@@ -92,15 +82,29 @@ public class EnemyController : MonoBehaviour
     // Changes the state of enemy to moving
     public void ChangeState()
     {
-        movingState = true;
+        MovingState = true;
     }
 
-    private void OnTriggerEnter2D(Collider2D hitInfo)
+
+    // Moves the enemy based on its state
+    private void Move()
     {
-        if (hitInfo.tag == "Loop")
+        if (!MovingState)
+            rb.MovePosition(transform.position + movement);
+
+        else if (MovingState)
         {
-            transform.position = new Vector2(transform.position.x, 7);
+            if (initialMove) // Used for the little loop at the beginning of the movement state
+            {
+                rb.AddForce(Vector2.up * 3000 * Time.fixedDeltaTime);
+                rb.AddForce(Vector2.right * 3000 * Time.fixedDeltaTime);
+
+                initialMove = false;
+            }
+
+            rb.AddForce(vectorToTarget);
         }
     }
+
 
 }

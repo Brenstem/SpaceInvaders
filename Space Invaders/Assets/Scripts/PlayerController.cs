@@ -13,7 +13,8 @@ public class PlayerController : MonoBehaviour {
     private Vector2 viewportSize;
     private float xBounds;
 
-    // Gets components
+
+    // Gets components and sets private variables
     private void Awake()
     {
         Camera camera = Camera.main;
@@ -38,6 +39,7 @@ public class PlayerController : MonoBehaviour {
     {
             Move();
     }
+
 
     // Moves the player based on horizontal axis input and speed
     private void Move()

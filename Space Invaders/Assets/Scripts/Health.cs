@@ -4,30 +4,21 @@ using UnityEngine;
 
 public class Health : MonoBehaviour
 {
-
+    // Inpsector variables
     [SerializeField] int healthPoints;
 
-    public int hp { get { return healthPoints; } set { healthPoints = value; } }
-
+    // Private variables
     private ScoreController scoreController;
 
+    // Properties
+    public int hp { get { return healthPoints; } set { healthPoints = value; } }
+
+    // Sets private variables
     private void Awake()
     {
         scoreController = GameObject.FindGameObjectWithTag("ScoreController").GetComponent<ScoreController>(); ;
     }
 
-    // Function for killing the player
-    private void Die()
-    {
-        if (transform.gameObject.CompareTag("Player"))
-        {
-            transform.gameObject.SetActive(false);
-        }
-        else
-        {
-            Destroy(this.gameObject);
-        }
-    }
 
     // Function for making the player take damage
     public void TakeDamage(int dmg)
@@ -40,12 +31,23 @@ public class Health : MonoBehaviour
         }
     }
 
+
+    // Kills the player by setting it's active to false or destroying it if it's not the player
+    private void Die()
+    {
+        if (transform.gameObject.CompareTag("Player"))
+            transform.gameObject.SetActive(false);
+
+        else
+            Destroy(this.gameObject);
+    }
+
+    // Updates the score when an enemy dies
     private void UpdateScore()
     {
         if (transform.gameObject.CompareTag("Enemy"))
-        {
-            Debug.Log("Should increase");
             scoreController.score += GetComponent<EnemyController>().scoreValue;
-        }
     }
+
+
 }

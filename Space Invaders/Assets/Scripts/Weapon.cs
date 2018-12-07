@@ -10,18 +10,27 @@ public class Weapon : MonoBehaviour {
     [SerializeField] GameObject bulletPrefab;
     [SerializeField] float fireRate;
     [SerializeField] bool autoFire;
-    [SerializeField] GameObject bulletHolder;
 
     // private variables
     private float fireTimer = 0;
     private Vector2 firePosition;
 
+
+    // Updates the position where the bullet spawns
     public void Update()
     {
         firePosition = new Vector2(transform.position.x + xOffset, transform.position.y + yOffset);
     }
 
-    // Instantiates bullets at firepoints if it's been long enough since the last shot
+    // Gizmos for the firepoint
+    private void OnDrawGizmos()
+    {
+        Gizmos.color = Color.green;
+        Gizmos.DrawCube(firePosition, new Vector2(0.1f, 0.1f));
+    }
+
+
+    // Instantiates bullets at firepoint if it's been long enough since the last shot
     public void Shoot()
     {
         fireTimer += Time.deltaTime;
@@ -46,9 +55,5 @@ public class Weapon : MonoBehaviour {
         
     }
 
-    private void OnDrawGizmos()
-    {
-        Gizmos.color = Color.green;
-        Gizmos.DrawCube(firePosition, new Vector2(0.1f, 0.1f));
-    }
+
 }

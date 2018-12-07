@@ -28,6 +28,8 @@ public class EnemySpawner : MonoBehaviour
     private int bossRows;
     private float ySpawnPos;
 
+
+    // Initialize variables
     private void Awake()
     {
         if (protectorAmount > 0) // Sets the amount of protector rows based on if protectors are used in the scene
@@ -36,7 +38,7 @@ public class EnemySpawner : MonoBehaviour
         if (bossEnemyAmount > 0) // Sets the amount of boss rows based on if bosses are used in the scene
             bossRows++;
 
-        SetStartPosition(lightEnemy, columns);
+        SetStartPosition(lightEnemy, columns); // If the designer doesn't spawn any light enemies this will break
         ySpawnPos = startingSpawnPos.position.y;
     }
 
