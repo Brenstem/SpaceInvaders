@@ -2,7 +2,6 @@
 
 public class BulletController : MonoBehaviour
 {
-
     // Inspector variables
     [SerializeField] float speed;
     [SerializeField] int dmg;

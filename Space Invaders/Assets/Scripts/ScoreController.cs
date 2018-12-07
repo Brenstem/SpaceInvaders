@@ -3,24 +3,23 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class ScoreController : MonoBehaviour {
-
+public class ScoreController : MonoBehaviour
+{
+    // Private variables
     private int mScore;
-
     private Text scoreText;
 
-    public int score {
-        get { return mScore; }
-        set { mScore = value; }
-    }
+    // Properties
+    public int score { get { return mScore; } set { mScore = value; } }
 
+    // Sets private variables
     private void Awake()
     {
         scoreText = GetComponent<Text>();
     }
 
-	// Update is called once per frame
-	void Update ()
+	// Updates score text
+	private void Update ()
     {
         scoreText.text = "Score: " + mScore.ToString();
 	}

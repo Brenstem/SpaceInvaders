@@ -2,8 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerController : MonoBehaviour {
-
+public class PlayerController : MonoBehaviour
+{
     // Insector variables
     [SerializeField] float speed;
 
@@ -30,12 +30,13 @@ public class PlayerController : MonoBehaviour {
     {
         for (int i = 0; i < weapons.Length; i++)
         {
-            weapons[i].Shoot();
+            if (weapons[i] != null)
+                weapons[i].Shoot();
         }
     }
 
     // Physics based movement
-    private void FixedUpdate ()
+    private void FixedUpdate()
     {
             Move();
     }

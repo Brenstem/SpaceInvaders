@@ -2,8 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Weapon : MonoBehaviour {
-
+public class Weapon : MonoBehaviour
+{
     // Inspector variables 
     [SerializeField] float xOffset;
     [SerializeField] float yOffset;

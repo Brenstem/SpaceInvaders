@@ -2,7 +2,6 @@
 
 public class StaticEnemyController : MonoBehaviour
 {
-
     // Inspector variables
     [SerializeField] float edgeOffset;
     [SerializeField] float changeStateTimer;
@@ -28,6 +27,7 @@ public class StaticEnemyController : MonoBehaviour
         InvokeRepeating("MoveStatic", 0, 0.1f); // Changing direction bugs out if this is in update
     }
 
+    // Changes states of enemies based on changeStateTimer
     private void Update()
     {
         timer += Time.deltaTime;
